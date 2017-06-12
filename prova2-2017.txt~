@@ -1,0 +1,109 @@
+Unilasalle-RJ - AV2
+Aluno: Mariane de Carvalho Teixeira - 0050012856
+Prova Av2 de Laboratorio de Sistemas Operacionais
+Professor: Alex Salgado
+1o. Semestre de 2017   Turno: Noite
+--------------------------------------------------
+1-Faça um script shell que receba um nome de arquivo como parametro e 
+responde se este arquivo existe ou não.
+
+
+GNU nano 2.2.6         Arquivo: shell1.sh                           
+
+#!/bin/bash
+arq=$1
+
+#-f testa se é um arq regular e existe
+if [ -f $arq ]
+then
+        echo "Arquivo Existe"
+else
+        echo "Arquivo Inexiste"
+fi
+
+
+2-Reescreva o codigo abaixo usando a estrutura for.
+#!/bin/bashcat
+cont=$1
+fat=1
+while [ $cont -gt 0 ] 
+do
+   fat=$(( $fat * $cont ))
+   cont=$(( $cont - 1 ))
+done
+echo $fat
+
+GNU nano 2.2.6         Arquivo: shell2.sh 
+
+#!/bin/bashcat
+cont=$1
+fat=1
+for ((i=1; i <= $cont ; i++))
+do
+    fat=$(($fat*$i))
+done
+echo $fat
+
+3-Usando estrutura de repetição, faça um script para exibir todos os arquivos
+da pasta atual com tamanho = 0kb (vazio).
+
+GNU nano 2.2.6         Arquivo: shell3.sh 
+
+#!/bin/bash
+for v in $(ls .)
+do
+	if [ -f $v ]
+	then	
+		if [ ! -s $v ]
+		then
+			echo $v
+
+		fi
+
+	fi
+
+done
+
+
+4-Usando estrutura de repetição, faça um script para ler a PASTA ATUAL, calcular e exibir:
+- O total de arquivos lidos
+- O total de arquivos com a extensão .txt 
+- O total de arquivos com a extensão .c
+- O total de arquivos com a extensão .py
+
+GNU nano 2.2.6         Arquivo: shell4.sh 
+
+#!/bin/bash
+countT=0
+countTXT=0
+countC=0
+countPy=0
+
+
+for arq in $(ls .)
+do
+case "$arq" in
+    
+    *.txt)
+        countTXT=$(( $countTXT + 1 ))
+        countT=$(( $countT + 1 ))
+        ;;
+    *.c)
+        c=$(( $c + 1 )) 
+        countT=$(( $countT + 1 ))
+        ;;
+    *.py)
+        countPy=$(( $countPy + 1 ))
+        countT=$(( $countT + 1 ))
+        ;;
+    
+     *) 
+        ;;
+esac
+done
+echo "O total de arquivos lidos: $countT"
+echo "O total de arquivos com a extensão .txt: $countTXT"
+echo "O total de arquivos com a extensão .c: $countC"
+echo "O total de arquivos com a extensão .py: $countPy"
+
+

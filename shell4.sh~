@@ -1,0 +1,33 @@
+#!/bin/bash
+arq=$1
+countT=0
+countTXT=0
+countC=0
+countPy=0
+
+
+for arq in $(ls .)
+do
+case "$arq" in
+    
+    *.txt)
+        countTXT=$(( $countTXT + 1 ))
+        countT=$(( $countT + 1 ))
+        ;;
+    *.c)
+        c=$(( $c + 1 )) 
+        countT=$(( $countT + 1 ))
+        ;;
+    *.py)
+        countPy=$(( $countPy + 1 ))
+        countT=$(( $countT + 1 ))
+        ;;
+    
+     *) 
+        ;;
+esac
+done
+echo "Qtd. de arquivos Total = $countT"
+echo "Qtd. de arquivos TXT = $countTXT"
+echo "Qtd. de arquivos C = $countC"
+echo "Qtd. de arquivos PY = $countPy"

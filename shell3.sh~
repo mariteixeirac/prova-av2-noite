@@ -1,0 +1,16 @@
+#!/bin/bash
+for valor in $(ls .)
+do
+	if [ -f $valor ]
+	then
+		echo $valor		
+		if [ ! -s $valor ]
+		then
+			echo $valor
+
+		fi
+
+	fi
+
+done
+
